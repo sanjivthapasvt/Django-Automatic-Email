@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django Mail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-r from-blue-500 to-indigo-600 min-h-screen flex items-center justify-center">
+    <section class="bg-white dark:bg-gray-900 shadow-lg rounded-xl p-8 w-full max-w-lg">
+      <h2 class="text-4xl font-bold text-center text-gray-900 dark:text-white">Django Mail</h2>
+      <p class="text-center text-gray-500 dark:text-gray-400 mt-2">Send emails with ease</p>
+      
+      <form method="POST" class="mt-6 space-y-4">
+        {% csrf_token %}
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">To:</label>
+          <input type="email" id="address" name="address"
+            class="w-full p-3 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-blue-500 focus:border-blue-500"
+            placeholder="name@email.com" required />
+        </div>
+
+        <div>
+          <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Subject</label>
+          <input type="text" id="subject" name="subject"
+            class="w-full p-3 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter subject for email" required />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your message</label>
+          <textarea id="message" name="message" rows="5"
+            class="w-full p-3 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Write your message..."></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md focus:ring-4 focus:ring-blue-300 transition">
+          Send Message
+        </button>
+      </form>
+      
+      <p class="text-center text-green-500 font-semibold mt-4">{{ result }}</p>
+    </section>
+  </body>
+</html>
